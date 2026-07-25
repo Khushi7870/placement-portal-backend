@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.khushi.placementportal.entity.User;
 import com.khushi.placementportal.repository.UserRepository;
+import com.khushi.placementportal.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
@@ -16,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public String getUsers() {
@@ -30,10 +35,10 @@ public class UserController {
     @PostMapping("/login")
     public String loginUser(@RequestBody LoginRequest request) {
 
-        String email = request.getEmail();
-        String password = request.getPassword();
-
-        return "Login Attempted For : " + email;
+        return userService.loginUser(
+                request.getEmail(),
+                request.getPassword()
+        );
     }
 
     @GetMapping("/test-user")
@@ -44,5 +49,7 @@ public class UserController {
                 .map(User::getName)
                 .orElse("User Not Found");
     }
+
+
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,5 +19,20 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+    public String loginUser(String email, String password) {
+
+        Optional<User> user = userRepository.findByEmail(email);
+
+        if(user.isPresent()) {
+
+            User existingUser = user.get();
+
+            if(existingUser.getPassword().equals(password)) {
+                return "Login Successful";
+            }
+        }
+
+        return "Invalid Email or Password";
     }
 }
