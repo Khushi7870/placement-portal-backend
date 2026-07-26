@@ -26,4 +26,10 @@ public class ResultService {
 
         return resultRepository.findById(id).orElse(null);
     }
+
+    public List<Result> getResultsByUser(Long userId) {
+
+        return resultRepository.findByUserId(userId);
+
+    }
 }

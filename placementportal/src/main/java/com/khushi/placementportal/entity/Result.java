@@ -15,6 +15,8 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long userId;
+
     private String studentName;
 
     private Integer score;
