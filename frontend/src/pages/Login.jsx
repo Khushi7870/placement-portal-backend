@@ -1,8 +1,9 @@
 import { useState } from "react";
 import API from "../services/api";
-
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,9 @@ function Login() {
       });
 
       if (response.data === "Login Successful") {
+        localStorage.setItem("userEmail", email);
     alert("Login Successful");
+    navigate("/dashboard");
 } else {
     alert("Login Failed");
 }
