@@ -4,11 +4,15 @@ import com.khushi.placementportal.entity.Result;
 import com.khushi.placementportal.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/results")
+
 public class ResultController {
 
     @Autowired
