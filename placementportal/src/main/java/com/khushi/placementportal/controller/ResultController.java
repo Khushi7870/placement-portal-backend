@@ -18,26 +18,35 @@ public class ResultController {
     @Autowired
     private ResultService resultService;
 
+    //save result
     @PostMapping
     public Result saveResult(@RequestBody Result result) {
 
         return resultService.saveResult(result);
     }
+
+    //get all results
     @GetMapping
     public List<Result> getAllResults() {
 
         return resultService.getAllResults();
     }
+     
+    //get result by id
     @GetMapping("/{id}")
     public Result getResultById(@PathVariable Long id) {
 
         return resultService.getResultById(id);
     }
+
+    
     @GetMapping("/test")
     public String test() {
 
         return "Result Controller Working";
     }
+
+    //get results by user id
     @GetMapping("/user/{userId}")
     public List<Result> getResultsByUser(@PathVariable Long userId) {
 
