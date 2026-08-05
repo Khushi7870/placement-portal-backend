@@ -85,15 +85,21 @@ function App() {
       <Navbar />
 
       <Routes>
-        
-        <Route path="/login" element={<Login />} />
-         <Route path="/register" element={<Register />} />
-         <Route path="/dashboard" element={<Dashboard />} />
-         <Route path="/test" element={<TestPage />} />
-         <Route path="/admin" element={<AdminDashboard />} />
 
+  <Route path="/" element={<Dashboard />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/dashboard" element={<Dashboard />} />
+  <Route path="/test" element={<TestPage />} />
 
-      </Routes>
+  <Route
+    path="/results"
+    element={<h2>Results Coming Soon</h2>}
+  />
+
+  <Route path="/admin" element={<AdminDashboard />} />
+
+  </Routes>
     </BrowserRouter>
   );
 }

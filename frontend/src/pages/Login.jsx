@@ -1,6 +1,6 @@
 import { useState } from "react";
 import API from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -11,6 +11,22 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    if (email.trim() === "") {
+  alert("Please enter your email.");
+  return;
+}
+
+    if (password.trim() === "") {
+     alert("Please enter your password.");
+     return;
+}    
+     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+     if (!emailPattern.test(email)) {
+    alert("Please enter a valid email.");
+    return;
+      }
+
     try {
       const response = await API.post("/users/login", {
         email,
@@ -20,6 +36,9 @@ function Login() {
       if (response.data === "Login Successful") {
         localStorage.setItem("userEmail", email);
     alert("Login Successful");
+        setEmail("");
+      setPassword("");
+
     navigate("/dashboard");
 } else {
     alert("Login Failed");
@@ -45,6 +64,7 @@ function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+     
         </div>
 
         <div>
@@ -62,8 +82,8 @@ function Login() {
       </form>
 
       <p>
-        Don't have an account? <a href="/register">Register</a>
-      </p>
+     Don't have an account? <Link to="/register">Register</Link>
+   </p>
     </div>
   );
 }

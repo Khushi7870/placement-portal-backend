@@ -1,5 +1,7 @@
 import { useState } from "react";
 import API from "../services/api";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Register() {
     const [name, setName] = useState("");
@@ -7,8 +9,42 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [role, setRole] = useState("");
 
+const navigate = useNavigate();
+
 const handleRegister = async (e) => {
   e.preventDefault();
+
+   if (name.trim() === "") {
+  alert("Please enter your name.");
+  return;
+}
+
+if (email.trim() === "") {
+  alert("Please enter your email.");
+  return;
+}
+
+if (password.trim() === "") {
+  alert("Please enter your password.");
+  return;
+}
+
+if (role.trim() === "") {
+  alert("Please enter your role.");
+  return;
+}
+
+   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   
+  if (!emailPattern.test(email)) {
+  alert("Please enter a valid email address.");
+  return;
+}
+
+if (password.length < 6) {
+  alert("Password must be at least 6 characters long.");
+  return;
+}
 
   try {
     const response = await API.post("/users/register", {
@@ -18,7 +54,23 @@ const handleRegister = async (e) => {
       role
     });
 
-    alert(response.data);
+   if (response.data === "User Registered Successfully") {
+
+  alert(response.data);
+
+  setName("");
+  setEmail("");
+  setPassword("");
+  setRole("");
+
+  navigate("/login");
+
+} else {
+
+  alert(response.data);
+
+}
+
 
   } catch (error) {
     console.error(error);
@@ -64,12 +116,14 @@ const handleRegister = async (e) => {
 
         <div>
           <label>Role</label>
-          <input
-          type="text"
-          placeholder="Enter role"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          />
+          <select
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
+        >
+       <option value="">Select Role</option>
+       <option value="STUDENT">Student</option>
+       <option value="ADMIN">Admin</option>
+       </select>
         </div>
 
         <button type="submit">
@@ -78,10 +132,10 @@ const handleRegister = async (e) => {
 
       </form>
 
-      <p>
+       <p>
         Already have an account?
-        <a href="/login"> Login</a>
-      </p>
+       <Link to="/login"> Login</Link>
+       </p>
 
     </div>
   );
