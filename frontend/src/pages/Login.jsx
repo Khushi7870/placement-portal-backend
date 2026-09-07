@@ -32,15 +32,21 @@ function Login() {
         email,
         password,
       });
+if (response.data === "Login Successful") {
 
-      if (response.data === "Login Successful") {
-        localStorage.setItem("userEmail", email);
-    alert("Login Successful");
-        setEmail("");
-      setPassword("");
+  localStorage.setItem("userEmail", email);
 
-    navigate("/dashboard");
-} else {
+  console.log("Saved userEmail:", localStorage.getItem("userEmail"));
+
+  alert("Login Successful");
+
+  setEmail("");
+  setPassword("");
+
+  navigate("/dashboard");
+
+}
+ else {
     alert("Login Failed");
 }
 

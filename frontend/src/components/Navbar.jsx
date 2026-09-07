@@ -9,27 +9,23 @@ function Navbar() {
 
       <ul className="nav-links">
 
-  <li>
-    <Link to="/">Home</Link>
-  </li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
 
-  <li>
-    <Link to="/login">Login</Link>
-  </li>
+        <li>
+          <Link to="/test">Tests</Link>
+        </li>
 
-  <li>
-    <Link to="/register">Register</Link>
-  </li>
+        <li>
+          <Link to="/results">Results</Link>
+        </li>
 
-  <li>
-    <Link to="/test">Tests</Link>
-  </li>
+        <li>
+          <Link to="/login-info">Login Info</Link>
+        </li>
 
-  <li>
-    <Link to="/results">Results</Link>
-  </li>
-
-       </ul>
+      </ul>
     </nav>
   );
 }

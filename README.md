@@ -1,28 +1,32 @@
-# Placement Portal
+# 🎓 Placement Preparation Portal
 
-A Full Stack Placement Portal developed using **Spring Boot**, **React.js**, and **MySQL**.
+A Full Stack Placement Preparation Portal developed using Spring Boot, React.js, and MySQL.
 
-The application provides separate modules for **Admin** and **Students**. Admins can manage aptitude and technical questions, while students can take online placement quizzes and view their results.
+The application allows students to register, log in, take aptitude tests, and view their results. Administrators can manage questions through a dedicated admin dashboard.
 
 ---
 
 # Tech Stack
 
 ## Frontend
+
 - React.js
 - React Router DOM
 - Axios
 - CSS
 
 ## Backend
+
 - Spring Boot
 - Spring Data JPA
 - REST APIs
 
 ## Database
+
 - MySQL
 
 ## Tools
+
 - VS Code
 - IntelliJ IDEA
 - Postman
@@ -33,6 +37,7 @@ The application provides separate modules for **Admin** and **Students**. Admins
 # Features
 
 ## Authentication
+
 - User Registration
 - User Login
 - Role-based Login (Admin / Student)
@@ -42,6 +47,7 @@ The application provides separate modules for **Admin** and **Students**. Admins
 # Admin Module
 
 ### Dashboard
+
 - View All Questions
 - Add New Questions
 - Update Existing Questions
@@ -49,6 +55,7 @@ The application provides separate modules for **Admin** and **Students**. Admins
 - Search Questions by Category
 
 ### Question Management
+
 - CRUD Operations
 - Form Validation
 - Real-time UI Updates
@@ -58,6 +65,7 @@ The application provides separate modules for **Admin** and **Students**. Admins
 # Student Module
 
 ### Quiz
+
 - Start Quiz
 - Display One Question at a Time
 - Previous & Next Navigation
@@ -65,6 +73,7 @@ The application provides separate modules for **Admin** and **Students**. Admins
 - Submit Quiz
 
 ### Result
+
 - Calculate Score
 - Display Correct Score
 - Show Total Questions
@@ -77,31 +86,31 @@ The application provides separate modules for **Admin** and **Students**. Admins
 
 ## Authentication APIs
 
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| POST | /api/auth/register | Register User |
-| POST | /api/auth/login | Login User |
+| Method | Endpoint            | Description   |
+| ------ | ------------------- | ------------- |
+| POST   | /api/users/register | Register User |
+| POST   | /api/users/login    | Login User    |
 
 ---
 
 ## Question APIs
 
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| GET | /api/questions | Get All Questions |
-| POST | /api/questions | Add Question |
-| PUT | /api/questions/{id} | Update Question |
-| DELETE | /api/questions/{id} | Delete Question |
-| GET | /api/questions/search?category=Java | Search Questions |
+| Method | Endpoint                            | Description       |
+| ------ | ----------------------------------- | ----------------- |
+| GET    | /api/questions                      | Get All Questions |
+| POST   | /api/questions                      | Add Question      |
+| PUT    | /api/questions/{id}                 | Update Question   |
+| DELETE | /api/questions/{id}                 | Delete Question   |
+| GET    | /api/questions/search?category=Java | Search Questions  |
 
 ---
 
 ## Quiz APIs
 
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| GET | /api/questions | Fetch Quiz Questions |
-| POST | /api/quiz/submit *(Optional)* | Submit Quiz |
+| Method | Endpoint                      | Description          |
+| ------ | ----------------------------- | -------------------- |
+| GET    | /api/questions                | Fetch Quiz Questions |
+| POST   | /api/quiz/submit _(Optional)_ | Submit Quiz          |
 
 ---
 
@@ -110,14 +119,14 @@ The application provides separate modules for **Admin** and **Students**. Admins
 ```
 placementportal
 │
-├── backend
+├── Backend
 │   │
 │   ├── controller
-│   │     ├── AuthController.java
+│   │     ├── UserController.java
 │   │     └── QuestionController.java
 │   │
 │   ├── service
-│   │     ├── AuthService.java
+│   │     ├── UserService.java
 │   │     └── QuestionService.java
 │   │
 │   ├── repository
@@ -154,62 +163,61 @@ placementportal
 # Screenshots
 
 ### Login Page
-
-(Add Screenshot)
+![Login Page](Login.png)
 
 ---
 
 ### Register Page
 
-(Add Screenshot)
+![Register page](Register.png)
 
 ---
 
 ### Student Dashboard
 
-(Add Screenshot)
+![Dashboard page](Dashboard.png)
 
 ---
 
 ### Admin Dashboard
 
-(Add Screenshot)
+![admin page](Admin.png)
 
 ---
 
 ### Add Question
 
-(Add Screenshot)
+![adding question](<Adding Question.png>)
 
 ---
 
 ### Edit Question
 
-(Add Screenshot)
+![Edit Question](<Edit Question.png>)
 
 ---
 
 ### Delete Question
 
-(Add Screenshot)
+![Delete Question](<Delete Question.png>)
 
 ---
 
 ### Search Questions
 
-(Add Screenshot)
+![Search Question](<Search Question.png>)
 
 ---
 
 ### Quiz Page
 
-(Add Screenshot)
+![Test Page](Test.png)
 
 ---
 
 ### Result Page
 
-(Add Screenshot)
+![Result page](Result-1.png)
 
 ---
 
@@ -226,7 +234,7 @@ git clone https://github.com/Khushi7870/placement-portal-backend.git
 ## Backend
 
 ```bash
-cd placementportal
+cd Backend
 ```
 
 Run the Spring Boot Application.
@@ -270,45 +278,58 @@ git push origin main
 # Completed Milestones
 
 ## Day 1
+
 - Project Setup
 - Spring Boot Configuration
 
 ## Day 2
+
 - MySQL Configuration
 - Entity Creation
 
 ## Day 3
+
 - User Registration API
 
 ## Day 4
+
 - Login API
 
 ## Day 5
+
 - React Project Setup
 
 ## Day 6
+
 - Login Integration
 
 ## Day 7
+
 - Dashboard Creation
 
 ## Day 8
+
 - Question Entity
 - Repository
 
 ## Day 9
+
 - Question REST APIs
 
 ## Day 10
+
 - React Backend Integration
 
 ## Day 11
+
 - Admin Dashboard UI
 
 ## Day 12
+
 - CRUD Operations
 
 ## Day 13
+
 - View Questions
 - Add Questions
 - Update Questions
@@ -317,6 +338,7 @@ git push origin main
 - End-to-End Testing
 
 ## Day 14
+
 - Quiz Page
 - Display Questions
 - Next & Previous Buttons
@@ -344,8 +366,7 @@ git push origin main
 
 **Khushi**
 
-GitHub:
-https://github.com/Khushi7870
+GitHub: https://github.com/Khushi7870
 
 ---
 

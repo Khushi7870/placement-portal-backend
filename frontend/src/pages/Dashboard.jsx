@@ -7,6 +7,7 @@ function Dashboard() {
   
   const navigate = useNavigate();
   const email = localStorage.getItem("userEmail");
+  console.log("Dashboard userEmail:", email);
   const [results, setResults] = useState([]);
 
 // Check if user is logged in
