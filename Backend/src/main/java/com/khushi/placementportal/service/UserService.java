@@ -13,8 +13,17 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    public String saveUser(User user) {
+
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+
+        if (existingUser.isPresent()) {
+            return "Email Already Registered";
+        }
+
+        userRepository.save(user);
+
+        return "User Registered Successfully";
     }
 
     public List<User> getAllUsers() {

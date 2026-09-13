@@ -29,13 +29,13 @@ public class UserController {
     public String getUsers() {
         return "User Controller Working";
     }
+
     @PostMapping("/register")
-         public String registerUser(@RequestBody User user) {
+    public String registerUser(@RequestBody User user) {
 
-     userService.saveUser(user);
+        return userService.saveUser(user);
 
-     return "User Registered Successfully";
-     }
+    }
 
     @PostMapping("/login")
     public String loginUser(@RequestBody LoginRequest request) {
