@@ -20,7 +20,7 @@ function Login() {
      alert("Please enter your password.");
      return;
 }    
-     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
      if (!emailPattern.test(email)) {
     alert("Please enter a valid email.");
