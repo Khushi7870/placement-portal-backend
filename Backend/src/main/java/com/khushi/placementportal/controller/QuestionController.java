@@ -19,7 +19,10 @@ import com.khushi.placementportal.service.QuestionService;
 
 @RestController
 @RequestMapping("/api/questions")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://placement-portal-backend-six.vercel.app"
+})
 public class QuestionController {
 
     @Autowired
