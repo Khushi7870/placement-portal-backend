@@ -14,7 +14,10 @@ import com.khushi.placementportal.repository.UserRepository;
 import com.khushi.placementportal.service.UserService;
 
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://placement-portal-backend-six.vercel.app"
+})
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
