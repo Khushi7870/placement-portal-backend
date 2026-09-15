@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { useSnackbar } from "notistack";
 
 function Dashboard() {
 
-  
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const email = localStorage.getItem("userEmail");
   console.log("Dashboard userEmail:", email);
   const [results, setResults] = useState([]);
-
+  
 // Check if user is logged in
 useEffect(() => {
   
   if (!email) {
-    alert("Please login first.");
+    enqueueSnackbar("Please login first", {
+  variant: "warning",
+    });
     navigate("/login");
    return;
   }
@@ -48,7 +51,9 @@ useEffect(() => {
     const handleLogout = () => {
     localStorage.removeItem("userEmail");
 
-    alert("Logged out successfully.");
+    enqueueSnackbar("Logged out successfully", {
+  variant: "info",
+   });
 
     navigate("/login");
     };

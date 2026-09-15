@@ -1,8 +1,10 @@
+import { useSnackbar } from "notistack";
 import { useState } from "react";
 import API from "../services/api";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -11,21 +13,28 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (email.trim() === "") {
-  alert("Please enter your email.");
+ if (email.trim() === "") {
+  enqueueSnackbar("Please enter your email.", {
+    variant: "warning",
+  });
   return;
 }
 
-    if (password.trim() === "") {
-     alert("Please enter your password.");
-     return;
-}    
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (password.trim() === "") {
+  enqueueSnackbar("Please enter your password.", {
+    variant: "warning",
+  });
+  return;
+}
 
-     if (!emailPattern.test(email)) {
-    alert("Please enter a valid email.");
-    return;
-      }
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailPattern.test(email)) {
+  enqueueSnackbar("Please enter a valid email.", {
+    variant: "warning",
+  });
+  return;
+}
+
 
     try {
       const response = await API.post("/users/login", {
@@ -38,7 +47,9 @@ if (response.data === "Login Successful") {
 
   console.log("Saved userEmail:", localStorage.getItem("userEmail"));
 
-  alert("Login Successful");
+  enqueueSnackbar("Login Successful", {
+  variant: "success",
+ });
 
   setEmail("");
   setPassword("");
@@ -47,12 +58,16 @@ if (response.data === "Login Successful") {
 
 }
  else {
-    alert("Login Failed");
+    enqueueSnackbar("Login Failed", {
+  variant: "error",
+   });
 }
 
     } catch (error) {
       console.error(error);
-      alert("Login Failed");
+      enqueueSnackbar("Login Failed", {
+  variant: "error",
+   });
     }
   };
 

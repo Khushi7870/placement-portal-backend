@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
+import { useSnackbar } from "notistack";
 
 function TestPage() {
 
+  const { enqueueSnackbar } = useSnackbar();
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [score, setScore] = useState(0);
@@ -50,12 +52,17 @@ function TestPage() {
 
   try {
     await API.post("/results", result);
-    alert("Result Saved Successfully!");
+    enqueueSnackbar("Result Saved Successfully!", {
+  variant: "success",
+   });
   } catch (error) {
-    console.error(error);
-    alert("Failed to save result.");
+  console.error(error);
+
+  enqueueSnackbar("Failed to save result!", {
+    variant: "error",
+  });
   }
-};
+}
 
   return (
   <div style={{ padding: "20px" }}>

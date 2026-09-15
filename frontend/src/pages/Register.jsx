@@ -1,9 +1,11 @@
+import { useSnackbar } from "notistack";
 import { useState } from "react";
 import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Register() {
+  const { enqueueSnackbar } = useSnackbar();
     const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
@@ -14,35 +16,47 @@ const navigate = useNavigate();
 const handleRegister = async (e) => {
   e.preventDefault();
 
-   if (name.trim() === "") {
-  alert("Please enter your name.");
+if (name.trim() === "") {
+  enqueueSnackbar("Please enter your name.", {
+    variant: "warning",
+  });
   return;
 }
 
 if (email.trim() === "") {
-  alert("Please enter your email.");
+  enqueueSnackbar("Please enter your email.", {
+    variant: "warning",
+  });
   return;
 }
 
 if (password.trim() === "") {
-  alert("Please enter your password.");
+  enqueueSnackbar("Please enter your password.", {
+    variant: "warning",
+  });
   return;
 }
 
 if (role.trim() === "") {
-  alert("Please enter your role.");
+  enqueueSnackbar("Please select your role.", {
+    variant: "warning",
+  });
   return;
 }
 
    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
    
   if (!emailPattern.test(email)) {
-  alert("Please enter a valid email address.");
+  enqueueSnackbar("Please enter a valid email address.", {
+    variant: "warning",
+  });
   return;
 }
 
 if (password.length < 6) {
-  alert("Password must be at least 6 characters long.");
+  enqueueSnackbar("Password must be at least 6 characters long.", {
+    variant: "warning",
+  });
   return;
 }
 
@@ -56,7 +70,9 @@ if (password.length < 6) {
 
    if (response.data === "User Registered Successfully") {
 
-  alert(response.data);
+  enqueueSnackbar(response.data, {
+  variant: "success",
+  });
 
   setName("");
   setEmail("");
@@ -67,14 +83,18 @@ if (password.length < 6) {
 
 } else {
 
-  alert(response.data);
+  enqueueSnackbar(response.data, {
+  variant: "success",
+  });
 
 }
 
 
   } catch (error) {
     console.error(error);
-    alert("Registration Failed");
+    enqueueSnackbar("Registration Failed", {
+  variant: "error",
+  });
   }
 };
 

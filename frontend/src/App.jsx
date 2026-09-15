@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
+import { SnackbarProvider } from "notistack";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -48,14 +49,19 @@ function AppContent() {
 
 
 function App() {
-
   return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+    >
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </SnackbarProvider>
   );
-
 }
-
 
 export default App;

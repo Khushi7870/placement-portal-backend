@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import API from "../services/api";
+import { useSnackbar } from "notistack";
 
 function AdminDashboard() {
 
+  const { enqueueSnackbar } = useSnackbar();
   const [questions, setQuestions] = useState([]);
 
   const [newQuestion, setNewQuestion] = useState({
@@ -29,14 +31,18 @@ function AdminDashboard() {
     !newQuestion.category ||
     !newQuestion.difficulty
   ) {
-    alert("Please fill all fields");
-    return;
+   enqueueSnackbar("Please fill all fields!", {
+  variant: "warning",
+  });
+   return;
   }
 
   try {
     await API.post("/questions", newQuestion);
 
-    alert("Question Added Successfully!");
+    enqueueSnackbar("Question Added Successfully!", {
+  variant: "success",
+   });
     setIsEditing(false);
     setNewQuestion({
   id: "",
@@ -55,7 +61,9 @@ function AdminDashboard() {
   } 
       catch (error) {
       console.error("Error:", error.response?.data || error.message);
-       alert("Failed to Add Question");
+       enqueueSnackbar("Failed to add question!", {
+  variant: "error",
+});
        }
   };
 
@@ -63,7 +71,9 @@ function AdminDashboard() {
   try {
     await API.put(`/questions/${newQuestion.id}`, newQuestion);
 
-    alert("Question Updated Successfully!");
+    enqueueSnackbar("Question Updated Successfully!", {
+  variant: "success",
+   });
 
    setNewQuestion({
   id: "",
@@ -83,7 +93,9 @@ function AdminDashboard() {
 
   } catch (error) {
     console.error(error);
-    alert("Update Failed");
+    enqueueSnackbar("Failed to update question!", {
+  variant: "error",
+});
   }
 };
    
@@ -97,13 +109,17 @@ function AdminDashboard() {
   try {
     await API.delete(`/questions/${id}`);
 
-    alert("Question Deleted Successfully!");
+    enqueueSnackbar("Question Deleted Successfully!", {
+  variant: "success",
+});
 
     fetchQuestions();
 
   } catch (error) {
     console.error(error);
-    alert("Delete Failed");
+    enqueueSnackbar("Failed to delete question!", {
+  variant: "error",
+});
   }
 }; 
 
