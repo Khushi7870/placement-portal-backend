@@ -2,7 +2,7 @@ import React from "react";
 
 function LoginInfo() {
 
-  const user = JSON.parse(localStorage.getItem("user"));
+   const email = localStorage.getItem("userEmail");
 
   return (
     <div style={{ padding: "40px", textAlign: "center" }}>
