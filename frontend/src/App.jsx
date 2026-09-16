@@ -9,7 +9,7 @@ import TestPage from "./pages/TestPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import ResultPage from "./pages/ResultPage";
 import LoginInfo from "./pages/LoginInfo";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function AppContent() {
 
@@ -27,26 +27,53 @@ function AppContent() {
 
       <Routes>
 
-        <Route path="/" element={<Dashboard />} />
+       
 
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+         path="/dashboard"
+        element={
+        <ProtectedRoute>
+        <Dashboard />
+       </ProtectedRoute>
+       }
+        />
 
-        <Route path="/test" element={<TestPage />} />
+        <Route
+       path="/test"
+       element={
+       <ProtectedRoute>
+       <TestPage />
+       </ProtectedRoute>
+       }
+       />
 
-        <Route path="/results" element={<ResultPage />} />
+        <Route
+       path="/results"
+       element={
+       <ProtectedRoute>
+        <ResultPage />
+        </ProtectedRoute>
+       }
+       />
 
         <Route path="/admin" element={<AdminDashboard />} />
          
-        <Route path="/login-info" element={<LoginInfo />} />
+       <Route
+        path="/login-info"
+        element={
+        <ProtectedRoute>
+       <LoginInfo />
+       </ProtectedRoute>
+       }
+       />
       </Routes>
     </>
   );
 }
-
 
 function App() {
   return (
