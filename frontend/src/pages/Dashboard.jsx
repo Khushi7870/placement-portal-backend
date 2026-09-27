@@ -23,17 +23,20 @@ useEffect(() => {
   }
     fetchResults();
   
-}, [navigate]);
+}, [navigate, email, enqueueSnackbar]);
 
    const fetchResults = async () => {
   try {
-    const response = await API.get("/results");
-    console.log(response.data);
+    const response = await API.get(
+      `/results/email/${encodeURIComponent(email)}`
+    );
+
+    console.log("Logged-in user results:", response.data);
     setResults(response.data);
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching user results:", error);
   }
-   };
+};
 
    const totalTests = results.length;
    const highestScore =
