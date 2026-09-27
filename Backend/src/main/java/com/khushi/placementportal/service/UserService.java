@@ -29,19 +29,19 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-    public String loginUser(String email, String password) {
+    public User loginUser(String email, String password) {
 
-        Optional<User> user = userRepository.findByEmail(email);
+    Optional<User> user = userRepository.findByEmail(email);
 
-        if(user.isPresent()) {
+    if (user.isPresent()) {
 
-            User existingUser = user.get();
+        User existingUser = user.get();
 
-            if(existingUser.getPassword().equals(password)) {
-                return "Login Successful";
-            }
+        if (existingUser.getPassword().equals(password)) {
+            return existingUser;
         }
-
-        return "Invalid Email or Password";
     }
+
+    return null;
+}
 }

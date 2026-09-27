@@ -56,4 +56,12 @@ public class ResultController {
         return resultService.getResultsByUser(userId);
 
     }
+    
+    //get results by user email
+    @GetMapping("/email/{userEmail}")
+      public List<Result> getResultsByUserEmail(
+        @PathVariable String userEmail) {
+
+     return resultService.getResultsByUserEmail(userEmail);
+     }
 }

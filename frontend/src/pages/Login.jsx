@@ -41,28 +41,37 @@ if (!emailPattern.test(email)) {
         email,
         password,
       });
-if (response.data === "Login Successful") {
 
-  localStorage.setItem("userEmail", email);
+      console.log("LOGIN RESPONSE:", response.data);
+      console.log("LOGIN RESPONSE TYPE:", typeof response.data);
 
-  console.log("Saved userEmail:", localStorage.getItem("userEmail"));
+if (response.data && response.data.id) {
+
+  localStorage.setItem("userId", response.data.id);
+  localStorage.setItem("userEmail", response.data.email);
+  localStorage.setItem("userName", response.data.name);
+
+  console.log("Saved userId:", response.data.id);
+  console.log("Saved userEmail:", response.data.email);
+  console.log("Saved userName:", response.data.name);
 
   enqueueSnackbar("Login Successful", {
-  variant: "success",
- });
+    variant: "success",
+  });
 
   setEmail("");
   setPassword("");
 
   navigate("/dashboard");
 
-}
- else {
-    enqueueSnackbar("Login Failed", {
-  variant: "error",
-   });
-}
+} else {
 
+  enqueueSnackbar("Login Failed", {
+    variant: "error",
+  });
+
+}
+ 
     } catch (error) {
       console.error(error);
       enqueueSnackbar("Login Failed", {

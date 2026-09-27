@@ -43,12 +43,14 @@ function TestPage() {
 
   console.log("Score:", total);
 
+  const userEmail = localStorage.getItem("userEmail");
+
   const result = {
-    userId: 1,
-    studentName: "Khushi Kumari",
-    score: total,
-    totalQuestions: questions.length,
-  };
+  userEmail: userEmail,
+  score: total,
+  totalQuestions: questions.length,
+  studentName: localStorage.getItem("userName") || "Student",
+};
 
   try {
     await API.post("/results", result);

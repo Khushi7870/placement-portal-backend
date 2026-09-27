@@ -26,7 +26,14 @@ function AppContent() {
       {!hideNavbar && <Navbar />}
 
       <Routes>
-
+         <Route
+         path="/"
+         element={
+         <ProtectedRoute>
+         <Dashboard />
+         </ProtectedRoute>
+         }
+         />
        
 
         <Route path="/login" element={<Login />} />

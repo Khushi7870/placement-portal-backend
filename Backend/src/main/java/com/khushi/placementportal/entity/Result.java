@@ -17,6 +17,8 @@ public class Result {
 
     private Long userId;
 
+    private String userEmail;
+
     private String studentName;
 
     private Integer score;

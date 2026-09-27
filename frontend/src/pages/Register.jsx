@@ -9,7 +9,7 @@ function Register() {
     const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
-const [role, setRole] = useState("");
+
 
 const navigate = useNavigate();
 
@@ -37,13 +37,6 @@ if (password.trim() === "") {
   return;
 }
 
-if (role.trim() === "") {
-  enqueueSnackbar("Please select your role.", {
-    variant: "warning",
-  });
-  return;
-}
-
    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
    
   if (!emailPattern.test(email)) {
@@ -65,7 +58,7 @@ if (password.length < 6) {
       name,
       email,
       password,
-      role
+      role: "STUDENT"
     });
 
    if (response.data === "User Registered Successfully") {
@@ -77,7 +70,7 @@ if (password.length < 6) {
   setName("");
   setEmail("");
   setPassword("");
-  setRole("");
+  
 
   navigate("/login");
 
@@ -133,19 +126,7 @@ if (password.length < 6) {
          onChange={(e) => setPassword(e.target.value)}
          />
         </div>
-
-        <div>
-          <label>Role</label>
-          <select
-        value={role}
-        onChange={(e) => setRole(e.target.value)}
-        >
-       <option value="">Select Role</option>
-       <option value="STUDENT">Student</option>
-       <option value="ADMIN">Admin</option>
-       </select>
-        </div>
-
+  
         <button type="submit">
           Register
         </button>
