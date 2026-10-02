@@ -22,7 +22,7 @@ function Navbar() {
     <li><Link to="/">Home</Link></li>
     <li><Link to="/test">Tests</Link></li>
     <li><Link to="/results">Results</Link></li>
-    <li><Link to="/login-info">Login Info</Link></li>
+    <li><Link to="/profile">Profile</Link></li>
    </ul>
   </nav>
   );
