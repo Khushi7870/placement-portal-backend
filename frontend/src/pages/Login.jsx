@@ -37,13 +37,16 @@ if (!emailPattern.test(email)) {
 
 
     try {
-      const response = await API.post("/users/login", {
-        email,
-        password,
-      });
+  
+  console.log("API URL:", import.meta.env.VITE_API_URL);
 
-      console.log("LOGIN RESPONSE:", response.data);
-      console.log("LOGIN RESPONSE TYPE:", typeof response.data);
+  const response = await API.post("/users/login", {
+    email,
+    password,
+  });
+
+  console.log("LOGIN RESPONSE:", response.data);
+  console.log("LOGIN RESPONSE TYPE:", typeof response.data);
 
 if (response.data && response.data.id) {
 
@@ -71,7 +74,7 @@ if (response.data && response.data.id) {
   });
 
 }
- 
+
     } catch (error) {
       console.error(error);
       enqueueSnackbar("Login Failed", {

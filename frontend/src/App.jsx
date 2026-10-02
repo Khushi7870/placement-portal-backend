@@ -1,30 +1,29 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { SnackbarProvider } from "notistack";
-import Navbar from "./components/Navbar";
+//import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import TestPage from "./pages/TestPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import ResultPage from "./pages/ResultPage";
-import LoginInfo from "./pages/LoginInfo";
+import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function AppContent() {
 
-  const location = useLocation();
+  //const location = useLocation();
 
   // Login aur Register page par Navbar hide rahega
-  const hideNavbar =
-    location.pathname === "/login" ||
-    location.pathname === "/register";
+  //const hideNavbar =
+   // location.pathname === "/login" ||
+   // location.pathname === "/register";
 
 
   return (
     <>
-      {!hideNavbar && <Navbar />}
-
+     {/* {!hideNavbar && <Navbar />} */}
       <Routes>
          <Route
          path="/"
@@ -69,14 +68,14 @@ function AppContent() {
 
         <Route path="/admin" element={<AdminDashboard />} />
          
-       <Route
-        path="/login-info"
+         <Route
+        path="/profile"
         element={
         <ProtectedRoute>
-       <LoginInfo />
-       </ProtectedRoute>
-       }
-       />
+        <Profile />
+        </ProtectedRoute>
+         }
+        />
       </Routes>
     </>
   );

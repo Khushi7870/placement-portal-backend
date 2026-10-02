@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
+import { useLocation } from "react-router-dom";
 
 function ResultPage() {
+  const location = useLocation();
+  const latestResult = location.state;
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -46,7 +49,25 @@ function ResultPage() {
   return (
     <div style={{ padding: "30px" }}>
       <h1 style={{ textAlign: "center" }}>My Results</h1>
+         {latestResult && (
+        <div
+    style={{
+      background: "#d4edda",
+      border: "2px solid #28a745",
+      borderRadius: "10px",
+      padding: "20px",
+      marginTop: "20px",
+      marginBottom: "20px",
+      textAlign: "center",
+    }}
+  >
+    <h2>🎉 Test Submitted Successfully!</h2>
 
+    <h3>
+      Score: {latestResult.score} / {latestResult.totalQuestions}
+    </h3>
+  </div>
+)}
       {results.length === 0 ? (
         <div style={{ textAlign: "center", marginTop: "40px" }}>
           <h2>No Results Found</h2>
