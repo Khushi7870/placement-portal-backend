@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import { useSnackbar } from "notistack";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 function TestPage() {
   const { enqueueSnackbar } = useSnackbar();
@@ -102,8 +103,11 @@ function TestPage() {
   };
 
   return (
+
     <div style={{ padding: "20px" }}>
 
+        <BackButton />
+        
       <h2>Online Test</h2>
 
       <p>
