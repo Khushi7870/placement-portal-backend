@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
 import { useLocation } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 function ResultPage() {
   const location = useLocation();
@@ -47,7 +48,10 @@ function ResultPage() {
   }
 
   return (
-    <div style={{ padding: "30px" }}>
+     <div className="results-page" style={{ padding: "30px" }}>
+
+    <BackButton />
+    
       <h1 style={{ textAlign: "center" }}>My Results</h1>
          {latestResult && (
         <div

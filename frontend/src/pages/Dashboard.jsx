@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import API from "../services/api";
 import { useSnackbar } from "notistack";
 import "./Dashboard.css";
@@ -149,9 +148,6 @@ function Dashboard() {
       {/* Main Content */}
       <main className="dashboard-main">
         
-         {/* Back Button */}
-           <BackButton />
-           
         {/* Top Header */}
         <header className="dashboard-header">
 

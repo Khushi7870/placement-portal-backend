@@ -1,4 +1,5 @@
 import React from "react";
+import BackButton from "../components/BackButton";
 
 function Profile() {
 
@@ -6,7 +7,11 @@ function Profile() {
   const userEmail = localStorage.getItem("userEmail");
 
   return (
-    <div style={{ padding: "30px" }}>
+    
+     <div className="profile-page" style={{ padding: "30px" }}> 
+
+    <BackButton />
+
       <h1>👤 My Profile</h1>
 
       <div
