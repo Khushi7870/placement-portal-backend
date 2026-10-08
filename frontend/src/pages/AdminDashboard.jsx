@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import API from "../services/api";
 import { useSnackbar } from "notistack";
+import "./AdminDashboard.css";
+
 
 function AdminDashboard() {
 
@@ -19,6 +21,17 @@ function AdminDashboard() {
 });
   const [isEditing, setIsEditing] = useState(false);
   const [searchCategory, setSearchCategory] = useState("");
+
+
+  const handleAdminLogout = () => {
+  localStorage.removeItem("adminLoggedIn");
+
+  enqueueSnackbar("Admin logged out successfully!", {
+    variant: "info",
+  });
+
+  window.location.href = "/admin";
+};
 
   const handleAddQuestion = async () => {
      if (
@@ -156,11 +169,16 @@ useEffect(() => {
   fetchQuestions();
 }, []);
    
-  return (
-    <div className="admin-dashboard">
-      <h1>Admin Dashboard</h1>
+ return (
+  <div className="admin-dashboard">
+    <h1>Admin Dashboard</h1>
 
-      <p>Welcome Admin!</p>
+    <p>Welcome Admin!</p>
+
+    <button onClick={handleAdminLogout}>
+      Logout
+    </button>
+    
 
       <div>
         <h2>All Questions</h2>
@@ -237,7 +255,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -248,7 +266,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -259,7 +277,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -270,7 +288,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -281,7 +299,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -292,7 +310,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -303,7 +321,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
 <input
   type="text"
@@ -314,7 +332,7 @@ useEffect(() => {
   }
 />
 
-<br /><br />
+
 
  <button
   onClick={isEditing ? handleUpdateQuestion : handleAddQuestion}

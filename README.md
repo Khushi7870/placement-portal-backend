@@ -176,7 +176,6 @@ placementportal
 ### Student Dashboard
 
 ![Dashboard page](Dashboard.png)
-
 ---
 
 ### Admin Dashboard
@@ -217,7 +216,7 @@ placementportal
 
 ### Result Page
 
-![Result page](Result-1.png)
+![Result page](Result.png)
 
 ---
 

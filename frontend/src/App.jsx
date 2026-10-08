@@ -7,10 +7,11 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import TestPage from "./pages/TestPage";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/AdminLogin";
 import ResultPage from "./pages/ResultPage";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
 function AppContent() {
 
   //const location = useLocation();
@@ -66,8 +67,17 @@ function AppContent() {
        }
        />
 
-        <Route path="/admin" element={<AdminDashboard />} />
-         
+        <Route path="/admin" element={<AdminLogin />} />
+
+             <Route
+              path="/admin/dashboard"
+              element={
+             <AdminProtectedRoute>
+             <AdminDashboard />
+             </AdminProtectedRoute>
+             }
+             />
+             
          <Route
         path="/profile"
         element={
