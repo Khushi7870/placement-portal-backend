@@ -208,27 +208,9 @@ useEffect(() => {
        </div>
      ))}
         
-        <button>View Questions</button>
-
-         <button
-         onClick={() => {
-           setIsEditing(false);
-
-           setNewQuestion({
-          id: "",
-          questionText: "",
-          optionA: "",
-          optionB: "",
-          optionC: "",
-          optionD: "",
-          correctAnswer: "",
-          category: "",
-          difficulty: ""
-          });
-         }}
->
-             Add Question
-             </button>
+        <button onClick={fetchQuestions}>
+         View All Questions
+        </button>
 
         <input
       type="text"
